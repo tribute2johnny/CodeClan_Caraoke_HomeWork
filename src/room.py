@@ -41,14 +41,15 @@ class Room:
 
 
     # attempt at trying to get the list to stop populating once it hit's a certain number
-    # def capacity_cannot_go_over(self):
-    #     guests = ["dave", "sarah", "tim", "jane"]
-    #     capacity = 0
-    #     while capacity < 3:
-    #         for guest in guests:
-    #             capacity += guest
-    #             if capacity > 3: break
-    #             self.number_guests.append(guest)
+    def capacity_cannot_go_over(self):
+        guests = ["dave", "sarah", "tim", "jane"]
+        capacity = 0
+        while capacity < 3:
+            for guest in guests:
+                capacity += 1
+                if capacity > 3: 
+                    return "full"
+                self.number_guests.append(guest)
 
         
                 
