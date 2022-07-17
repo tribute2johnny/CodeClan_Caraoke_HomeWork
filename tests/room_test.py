@@ -41,11 +41,23 @@ class TestRoom(unittest.TestCase):
         self.room_2.check_in(guest_1)
         self.room_2.check_in(guest_2)
         self.room_2.check_in(guest_3)
-        self.assertEqual("room is full", self.room_2.capacity_reached())
+        self.assertEqual("capacity reached", self.room_2.capacity())
 
     def test_room_has_space(self):
         guest_1 = Guest("David", 24)
         guest_2 = Guest("Sarah", 26)
         self.room_3.check_in(guest_1)
         self.room_3.check_in(guest_2)
-        self.assertEqual("room has space", self.room_3.capacity_reached())
+        self.assertEqual("room has space", self.room_3.capacity())
+
+    def test_room_cannot_go_over_capacity(self):
+        guest_1 = Guest("David", 24)
+        guest_2 = Guest("Sarah", 26)
+        guest_3 = Guest("Tom", 22)
+        guest_4 = Guest("Lyla", 28)
+        self.room_2.check_in(guest_1)
+        self.room_2.check_in(guest_2)
+        self.room_2.check_in(guest_3)
+        self.room_2.check_in(guest_4)
+        self.assertEqual("Sorry there is no more room!", self.room_2.capacity())
+
