@@ -28,8 +28,24 @@ class TestRoom(unittest.TestCase):
         self.room_2.check_in(guest)
         self.assertEqual(1, self.room_2.guest_count())
 
-    def test_can_remove_guest_from_room(self):
+    def test_can_check_in_and_check_out_guest(self):
         guest = Guest("David", 24)
         self.room_2.check_in(guest)
         self.room_2.check_out(guest)
         self.assertEqual(0, self.room_2.guest_count())
+
+    def test_room_capacity_reached(self):
+        guest_1 = Guest("David", 24)
+        guest_2 = Guest("Sarah", 26)
+        guest_3 = Guest("Tom", 22)
+        self.room_2.check_in(guest_1)
+        self.room_2.check_in(guest_2)
+        self.room_2.check_in(guest_3)
+        self.assertEqual("room is full", self.room_2.capacity_reached())
+
+    def test_room_has_space(self):
+        guest_1 = Guest("David", 24)
+        guest_2 = Guest("Sarah", 26)
+        self.room_3.check_in(guest_1)
+        self.room_3.check_in(guest_2)
+        self.assertEqual("room has space", self.room_3.capacity_reached())
