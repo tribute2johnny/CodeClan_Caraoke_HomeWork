@@ -62,5 +62,5 @@ class TestRoom(unittest.TestCase):
         self.assertEqual("Sorry there is no more room!", self.room_2.capacity())
 
     def test_room_caps_at_3(self):
-        self.assertEqual("full", self.room_1.capacity_cannot_go_over())
+        self.assertEqual("no more room", self.room_1.cannot_exceed_capacity())
 
